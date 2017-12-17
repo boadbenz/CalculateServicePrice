@@ -1,0 +1,64 @@
+<html>
+<head>
+ <meta charset="UTF-8">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"> </script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"> </script>
+
+
+
+<script>
+$(document).ready(function() {
+   $.getJSON('list_price.json', function(data) {
+       $.each(data, function(i, f) {
+          var tblRow = "<tr>" + 
+           "<td>" + f.mobile_no + "</td>" + "<td>" + f.price + "</td>" + "</tr>"
+           $(tblRow).appendTo("#userdata tbody");
+     });
+	$('#userdata').DataTable( {
+        "pagingType": "full_numbers"
+    });
+   });
+} );
+</script>
+
+
+</head>
+
+<body>
+
+<div class="wrapper">
+<div class="container">
+	<h1>แสดงค่าใช้บริการของลูกค้า</h1>
+   <table id= "userdata" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<thead>
+            <th>mobile_no</th>
+            <th>price</th>
+        </thead>
+		<tfoot>
+            <tr>
+                <th>mobile_no</th>
+            <th>price</th>
+            </tr>
+        </tfoot>
+      <tbody>
+
+       </tbody>
+   </table>
+
+</div>
+</div>
+
+</body>
+</html>
